@@ -1,0 +1,14 @@
+﻿CREATE TABLE QueuedDomainEvents (
+    Id BIGINT IDENTITY(1,1) NOT NULL,
+    QueuedAt DATETIME NOT NULL,
+    StreamId NVARCHAR(255) NOT NULL,
+    Type NVARCHAR(255) NOT NULL,
+    Name NVARCHAR(255) NOT NULL,
+    Payload NVARCHAR(MAX) NOT NULL,
+    CONSTRAINT PK_QueuedDomainEvents PRIMARY KEY CLUSTERED (Id)
+);
+
+--Recommended indexes for performance
+    CREATE NONCLUSTERED INDEX IX_QueuedDomainEvents_StreamId ON QueuedDomainEvents (StreamId);
+CREATE NONCLUSTERED INDEX IX_QueuedDomainEvents_Type ON QueuedDomainEvents (Type);
+CREATE NONCLUSTERED INDEX IX_QueuedDomainEvents_QueuedAt ON QueuedDomainEvents (QueuedAt);

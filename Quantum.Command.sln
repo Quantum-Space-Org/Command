@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5074ECE4-CB41-4155-9202-1252A2E15654}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2011D3CD-8BB3-4E56-8282-DCC1042B3407}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quantum.Command", "src\Dispatcher\Quantum.Command.csproj", "{BF43126E-2FA4-4449-BEBB-49F231C6DDA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09EB2FBF-5DE0-49CE-9D6B-ED6351A0A82F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quantum.Command.Pipeline", "src\Pipeline\Quantum.Command.Pipeline.csproj", "{71D77677-6EA7-418C-AB8D-815247277219}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quantum.Command.Internal", "src\Internal\Quantum.Command.Internal.csproj", "{21C21C9C-6E2B-4437-8981-BFDE4A7AB136}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quantum.Command.EventSourcing", "src\EventSourcing\Quantum.Command.EventSourcing.csproj", "{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF43126E-2FA4-4449-BEBB-49F231C6DDA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF43126E-2FA4-4449-BEBB-49F231C6DDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF43126E-2FA4-4449-BEBB-49F231C6DDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF43126E-2FA4-4449-BEBB-49F231C6DDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D77677-6EA7-418C-AB8D-815247277219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D77677-6EA7-418C-AB8D-815247277219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D77677-6EA7-418C-AB8D-815247277219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D77677-6EA7-418C-AB8D-815247277219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C21C9C-6E2B-4437-8981-BFDE4A7AB136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C21C9C-6E2B-4437-8981-BFDE4A7AB136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C21C9C-6E2B-4437-8981-BFDE4A7AB136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C21C9C-6E2B-4437-8981-BFDE4A7AB136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF43126E-2FA4-4449-BEBB-49F231C6DDA5} = {5074ECE4-CB41-4155-9202-1252A2E15654}
+		{71D77677-6EA7-418C-AB8D-815247277219} = {5074ECE4-CB41-4155-9202-1252A2E15654}
+		{21C21C9C-6E2B-4437-8981-BFDE4A7AB136} = {5074ECE4-CB41-4155-9202-1252A2E15654}
+		{C1E28AE7-F2F0-4EBD-B9CA-359EB5CA496B} = {5074ECE4-CB41-4155-9202-1252A2E15654}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CE69326-D13A-4A9B-974F-50FB4C5203BA}
+	EndGlobalSection
+EndGlobal
