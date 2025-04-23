@@ -13,7 +13,7 @@ declare -A package_paths
 # Find all .nupkg files in ./build
 echo "🔍 Searching for NuGet packages in ./build ..."
 nupkgs=$(find ./build -name "*.nupkg")
-
+ 
 if [ -z "$nupkgs" ]; then
   echo "❌ No .nupkg files found in ./build"
   exit 1
