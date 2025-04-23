@@ -1,6 +1,5 @@
-﻿using Quantum.Command.Command.Interceptors;
-using Quantum.Command.Command.Sink;
-using Quantum.Dispatcher.Command;
+﻿using Quantum.Command.Interceptors;
+using Quantum.Command.Sink;
 using Quantum.Resolver;
 
 namespace Quantum.Command.EventSourcing;

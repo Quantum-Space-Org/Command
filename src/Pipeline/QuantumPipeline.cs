@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Quantum.Command.Pipeline;
 using Quantum.Command.Pipeline.Stages;
 using Quantum.Core;
 using Quantum.Domain;
 using Quantum.Domain.Messages.Event;
 
-namespace Quantum.Command.Internal
+namespace Quantum.Command.Pipeline
 {
-    public class QuantumInternalCommandPipeline : IQuantumInternalCommandPipeline
+    public interface IQuantumPipeline
+    {
+        void AddStage(IAmAPipelineStage stage);
+        Task<ValidationResult> Process<T>(T command) where T : IAmACommand;
+        void IWantToListenTo<T>(Action<IsADomainEvent, long, string> action) where T : IsADomainEvent;
+        Queue<IAmAPipelineStage> Stages();
+        bool HasAnyStages();
+    }
+
+    public class QuantumPipeline : IQuantumPipeline
     {
         private readonly Queue<IAmAPipelineStage> _stages;
         private readonly StageContext _context = new();
 
-        public QuantumInternalCommandPipeline()
+        public QuantumPipeline()
             => _stages = new Queue<IAmAPipelineStage>();
 
         public void AddStage(IAmAPipelineStage stage)
@@ -33,10 +40,9 @@ namespace Quantum.Command.Internal
 
             try
             {
-                while (StagesIsNotEmpty())
+                foreach (var amAPipelineStage in _stages)
                 {
-                    var stage = _stages.Dequeue();
-                    await stage.Process(command, _context);
+                    await amAPipelineStage.Process(command, _context);
                 }
             }
             catch (DomainValidationException ex)
@@ -47,26 +53,22 @@ namespace Quantum.Command.Internal
             {
                 return ex.ValidationResult;
             }
-
+            finally
+            {
+                _context.Clear();
+            }
             return ValidationResult.Success();
         }
-
-        private bool StagesIsNotEmpty()
-            => This.Is.True(_stages.Any());
-
+        
         public void IWantToListenTo<T>(Action<IsADomainEvent, long, string> action)
-            where T : IsADomainEvent
-        {
+            where T : IsADomainEvent =>
             _context.AddEventListeners<T>(action);
-        }
 
-        public Queue<IAmAPipelineStage> Stages()
-        {
-            return _stages;
-        }
+        public Queue<IAmAPipelineStage> Stages() 
+            => _stages;
 
         public bool HasAnyStages() 
-            => Stages() != null && Stages().Any();
+            => _stages != null && _stages.Any();
 
         public class StarterStageIsEmptyOrNullException : Exception
         {

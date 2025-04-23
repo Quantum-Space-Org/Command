@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Quantum.Command.Command.Handlers;
-using Quantum.Dispatcher.Command;
+using Quantum.Command.Handlers;
 using Quantum.Domain;
 using Quantum.Domain.Messages.Event;
 using Quantum.EventSourcing;

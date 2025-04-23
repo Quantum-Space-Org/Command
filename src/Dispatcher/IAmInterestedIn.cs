@@ -1,4 +1,4 @@
-﻿namespace Quantum.Dispatcher;
+﻿namespace Quantum.Command;
 
 public interface IAmInterestedIn<ThisEvent>
     where ThisEvent : IsADomainEvent

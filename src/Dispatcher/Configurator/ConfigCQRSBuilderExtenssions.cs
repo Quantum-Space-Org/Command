@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Quantum.Command.Command.Handlers;
+using Quantum.Command.Handlers;
+using Quantum.Command.Semaphore;
 using Quantum.Configurator;
-using Quantum.Dispatcher.Semaphore;
 
-namespace Quantum.Dispatcher.Configurator;
+namespace Quantum.Command.Configurator;
 
 public static class ConfigCQRSBuilderExtenssions
 {

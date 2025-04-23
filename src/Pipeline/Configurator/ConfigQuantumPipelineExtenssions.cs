@@ -1,8 +1,8 @@
-﻿namespace Quantum.Dispatcher.Configurator;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Quantum.Configurator;
-using Pipeline;
+
+namespace Quantum.Command.Pipeline.Configurator;
+
 using static Pipeline.HeyPipeline;
 
 public static class ConfigQuantumPipelineExtensions

@@ -1,15 +1,13 @@
-﻿using System;
-using Quantum.Command.Pipeline;
-using Quantum.Core;
+﻿using Quantum.Core;
 
-namespace Quantum.Command.Internal;
+namespace Quantum.Command.Pipeline;
 
-public class HeyInternalPipeline
+public class HeyPipeline
 {
-    public static HeyInternalPipeline IWant() => new();
-    public HeyInternalPipeline ToDefineAPipeline()
+    public static HeyPipeline IWant() => new();
+    public HeyPipeline ToDefineAPipeline()
     {
-        return new HeyInternalPipeline();
+        return new HeyPipeline();
     }
     public PipelineBuilder WithStarterStage(IAmAPipelineStage stage)
     {
@@ -18,12 +16,11 @@ public class HeyInternalPipeline
 
     public class PipelineBuilder
     {
-        private readonly IQuantumInternalCommandPipeline _quantumInternalCommandPipeline;
+        private readonly IQuantumPipeline _quantumPipeline;
         private IAmAPipelineStage _lastStage;
         public PipelineBuilder(IAmAPipelineStage starterLastStage)
         {
-
-            _quantumInternalCommandPipeline = new QuantumInternalCommandPipeline();
+            _quantumPipeline = new QuantumPipeline();
 
             _lastStage = starterLastStage ?? throw new ArgumentNullException("starterLastStage");
             _lastStage.Predecessor = null;
@@ -32,29 +29,29 @@ public class HeyInternalPipeline
         public PipelineBuilder WithSuccessor(IAmAPipelineStage newStage)
         {
             _lastStage.Successor = newStage;
-            _quantumInternalCommandPipeline.AddStage(_lastStage);
+            _quantumPipeline.AddStage(_lastStage);
             newStage.Predecessor = _lastStage;
             _lastStage = newStage;
 
             return this;
         }
 
-
-           
-        public IQuantumInternalCommandPipeline ThankYou()
+        public IQuantumPipeline ThankYou()
         {
             _lastStage.Successor = null;
-            _quantumInternalCommandPipeline.AddStage(_lastStage);
-                
-            GuardAgainstEmptyStages(_quantumInternalCommandPipeline);
+            _quantumPipeline.AddStage(_lastStage);
 
-            return _quantumInternalCommandPipeline;
+            GuardAgainstEmptyStages(_quantumPipeline);
+            return _quantumPipeline;
         }
 
-        private void GuardAgainstEmptyStages(IQuantumInternalCommandPipeline quantumPipeline)
+           
+        private void GuardAgainstEmptyStages(IQuantumPipeline quantumPipeline)
         {
             if (This.Is.False(quantumPipeline.HasAnyStages()))
                 throw new QuantumPipelineEmptyStagesException();
+
         }
+
     }
 }

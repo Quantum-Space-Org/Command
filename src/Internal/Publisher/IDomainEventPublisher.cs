@@ -1,4 +1,4 @@
-﻿namespace Quantum.Dispatcher.Configurator;
+﻿namespace Quantum.Command.Internal.Publisher;
 
 public interface IDomainEventPublisher
 {

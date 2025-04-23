@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Quantum.Dispatcher.Command;
+namespace Quantum.Command.Internal;
 
 public interface IInternalServiceExecutor
 {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 
-namespace Quantum.Dispatcher.Command.Jobs;
+namespace Quantum.Command.Internal.Jobs;
 
 public class InternalCommandExecutorJob : IJob
 {

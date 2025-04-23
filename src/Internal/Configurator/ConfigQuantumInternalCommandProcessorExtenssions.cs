@@ -1,14 +1,11 @@
-﻿using Quantum.DataBase.EntityFramework;
-
-namespace Quantum.Dispatcher.Configurator;
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Quantum.Command.Internal.Publisher;
 using Quantum.Configurator;
-using Quantum.DataBase;
-using Quantum.Dispatcher.Command;
-using Quantum.Dispatcher.Pipeline;
+using Quantum.DataBase.EntityFramework;
+
+namespace Quantum.Command.Internal.Configurator;
 
 public static class ConfigQuantumInternalCommandProcessorExtenssions
 {

@@ -2,7 +2,7 @@
 using Quantum.Core;
 using Quantum.Domain.Messages.Command;
 
-namespace Quantum.Dispatcher.Command;
+namespace Quantum.Command.Internal;
 
 public interface ICommandsScheduler
 {

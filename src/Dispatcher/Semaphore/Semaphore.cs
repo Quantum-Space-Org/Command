@@ -1,4 +1,4 @@
-namespace Quantum.Dispatcher.Semaphore;
+namespace Quantum.Command.Semaphore;
 
 public class Semaphore : ISemaphore
 {

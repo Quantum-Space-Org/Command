@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Quantum.Command.Pipeline;
 using Quantum.Core;
-using Quantum.Domain;
 using Quantum.Domain.Messages.Event;
 
-namespace Quantum.Dispatcher.Pipeline
+namespace Quantum.Command.Internal
 {
     public interface IQuantumInternalCommandPipeline
     {

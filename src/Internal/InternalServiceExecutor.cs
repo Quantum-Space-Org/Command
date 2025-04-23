@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Quantum.Core;
-using Quantum.Dispatcher.Pipeline;
 
-namespace Quantum.Dispatcher.Command;
+namespace Quantum.Command.Internal;
 
 public class InternalServiceExecutor : IInternalServiceExecutor
 {

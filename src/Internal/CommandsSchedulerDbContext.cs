@@ -1,10 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Quantum.DataBase;
 using Quantum.DataBase.EntityFramework;
-using Quantum.DataBase.EntityFramework.Interceptor;
 
-namespace Quantum.Dispatcher.Command;
+namespace Quantum.Command.Internal;
 
 
 

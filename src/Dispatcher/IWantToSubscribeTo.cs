@@ -1,6 +1,6 @@
-﻿namespace Quantum.Dispatcher;
+﻿using System.Linq;
 
-using System.Linq;
+namespace Quantum.Command;
 
 public abstract class IWantToSubscribeTo<T>
     where T : IsADomainEvent
