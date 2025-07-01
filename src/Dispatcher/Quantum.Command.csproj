@@ -7,7 +7,7 @@
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
     <Authors>Masoud Bahrami</Authors>
     <Company>Quantum Space Fundation</Company>
-    <Version>0.0.101</Version>
+    <Version>0.0.2</Version>
     <PackageProjectUrl>https://github.com/Quantum-Space-Org/Core</PackageProjectUrl>
   </PropertyGroup>
 
