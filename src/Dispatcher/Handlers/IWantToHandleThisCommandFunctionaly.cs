@@ -8,19 +8,21 @@ public abstract class IWantToHandleThisCommandFunctionaly<TCommand>(QuantumDbCon
     : IWantToHandleThisCommand<TCommand>
     where TCommand : IAmACommand
 {
-    private Tuple<Type, object> entity;
+    private Tuple<Type, object> _entityTuple;
 
     private EntityState _state = EntityState.Unchanged;
 
-    protected ApplicationServiceRulesChecker<IWantToHandleThisCommandFunctionaly<TCommand>> If => new(this);
+    protected ApplicationServiceRulesChecker<IWantToHandleThisCommandFunctionaly<TCommand>>
+        If => new(this);
 
     public IWantToHandleThisCommandFunctionaly<TCommand> Create<T>(Func<T> func)
-    {
+    { 
         var entityValue = func.Invoke();
 
-        entity = new Tuple<Type, object>(typeof(T), entityValue);
+        _entityTuple = new Tuple<Type, object>(typeof(T), entityValue);
 
         _state = EntityState.Added;
+
         return this;
     }
 
@@ -29,7 +31,7 @@ public abstract class IWantToHandleThisCommandFunctionaly<TCommand>(QuantumDbCon
     {
         var entityValue = await dbContext.Get<T>().FirstOrDefaultAsync(expression);
 
-        entity = new Tuple<Type, object>(typeof(T), entityValue);
+        _entityTuple = new Tuple<Type, object>(typeof(T), entityValue);
 
         return this;
     }
@@ -39,14 +41,14 @@ public abstract class IWantToHandleThisCommandFunctionaly<TCommand>(QuantumDbCon
     {
         var entityValue = await dbContext.Get<T>().FindAsync(id);
 
-        entity = new Tuple<Type, object>(typeof(T), entityValue);
+        _entityTuple = new Tuple<Type, object>(typeof(T), entityValue);
 
         return this;
     }
 
     public IWantToHandleThisCommandFunctionaly<TCommand> Mutate<T>(Action<T> action)
     {
-        action.Invoke((T)entity.Item2);
+        action.Invoke((T)_entityTuple.Item2);
         _state = EntityState.Modified;
 
         return this;
@@ -54,7 +56,7 @@ public abstract class IWantToHandleThisCommandFunctionaly<TCommand>(QuantumDbCon
 
     public void Thanks()
     {
-        if (entity is not null)
-            dbContext.Entry(entity.Item2).State = _state;
+        if (_entityTuple is not null)
+            dbContext.Entry(_entityTuple.Item2).State = _state;
     }
 }

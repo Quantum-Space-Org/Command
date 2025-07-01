@@ -1,5 +1,6 @@
 ﻿namespace Quantum.Command.Handlers;
 
+using System.Collections.Immutable;
 using System.Linq;
 
 public abstract class IWantToHandleThisCommand<TCommand>
@@ -7,14 +8,14 @@ public abstract class IWantToHandleThisCommand<TCommand>
 {
     private List<IsADomainEvent> QueuedDomainEvents { get; } = [];
 
-    public IsAnIdentity EventStreamId { get; private set; }
+    public IsAnIdentity EventStreamId { get; protected set; }
 
     public abstract Task Handle(TCommand command);
 
     public virtual Task Compensate(TCommand command)
         => Task.CompletedTask;
 
-    public void EnQueue(IsAnIdentity eventStreamId, List<IsADomainEvent> domainEvents)
+    public void EnQueue(IsAnIdentity eventStreamId, ImmutableList<IsADomainEvent> domainEvents)
     {
         EventStreamId = eventStreamId;
         QueuedDomainEvents.AddRange(domainEvents);
@@ -29,10 +30,3 @@ public abstract class IWantToHandleThisCommand<TCommand>
         return result;
     }
 }
-
-public class ApplicationServiceValidationException(ValidationResult validationResult)
-    : DomainValidationException(validationResult);
-
-public class BusinessRulesIsEmptyException : Exception;
-
-public class FuncRuleIsNullException : Exception;

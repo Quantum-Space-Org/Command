@@ -84,3 +84,10 @@ public class ApplicationServiceRulesChecker<TCommandHandler>
 
     public TCommandHandler Then => _handler;
 }
+
+public class ApplicationServiceValidationException(ValidationResult validationResult)
+    : DomainValidationException(validationResult);
+
+public class BusinessRulesIsEmptyException : Exception;
+
+public class FuncRuleIsNullException : Exception;
